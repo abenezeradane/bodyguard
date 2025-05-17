@@ -1,36 +1,63 @@
 # bodyguard
-> 🛡️ Cyberbullying Detection System
+> 🛡️  **Cyberbullying Detection System (Advocacy Project)**
 
-A machine learning-based project aimed at detecting and flagging potential cases of cyberbullying on Twitter. This system uses NLP and a web-integrated interface to promote safer online spaces by identifying harmful text-based interactions.
+This project aims to reduce cyberbullying on social media platforms by detecting harmful content in real-time using Natural Language Processing (NLP) and machine learning. The focus is on text-based tweets, analyzed through a browser extension and a backend ML service.
 
----
+## 🧠 Objective
 
-## 🚀 Project Goals
+Design and deploy a system that:
 
--   Detect cyberbullying in real-time using ML models.
--   Provide a browser-based warning overlay on harmful tweets.
--   Store analyzed tweets in a PostgreSQL database.
--   Enable real-time classification via REST API.
+- Detects potential cyberbullying in tweets.
+- Flags tweets with warnings in the user interface.
+- Stores flagged data for analysis and improvement.
 
----
+## 🗓️ Project Plan
 
-## 📅 Project Plan
+### Month 1 – Research, Planning, and Data Collection
 
-### Month 1: Research & Data Preparation
+**Weeks 1-2:**
 
--   **Week 1–2**: Research cyberbullying patterns, ML/NLP techniques.
--   **Week 3**: Finalize project scope, architecture, and tools.
--   **Week 4**: Collect and preprocess datasets.
+- Research cyberbullying definitions and patterns.
+- Study prior ML approaches in NLP tasks (text classification, sentiment analysis).
 
-### Month 2: Development & Deployment
+**Week 3:**
 
--   **Week 1**: Build rule-based prototype.
--   **Week 2–3**: Train and evaluate ML models (e.g., BERT).
--   **Week 4**: Final testing, UI integration, and deployment.
+- Define scope: Detect offensive content in Twitter text.
+- Choose models (e.g., BERT, RoBERTa).
+- Set up Python, Transformers, TensorFlow/PyTorch.
 
----
+**Week 4:**
 
-## 📐 System Architecture
+- Collect datasets (Twitter Sentiment, Hateful Memes, etc.).
+- Preprocess and annotate the text data.
+
+### Month 2 – Development, Testing, and Deployment
+
+**Week 1:**
+
+- Build a rule-based prototype using keyword matching/sentiment scoring.
+
+**Weeks 2–3:**
+
+- Fine-tune a transformer-based classifier (e.g., RoBERTa).
+- Compare models and tune hyperparameters.
+- Create a frontend overlay for flagged tweets.
+
+**Week 4:**
+
+- Evaluate the model (precision, recall, F1-score).
+- Integrate feedback and finalize the system.
+
+## 📦 Tech Stack
+
+- **Frontend:** Chrome Extension (Vanilla JS, DOM API)
+- **Backend:** FastAPI, PostgreSQL, Docker
+- **ML:** Transformers (RoBERTa), PyTorch
+- **Deployment:** Docker Compose
+
+## ⚙️ Architecture Overview
+
+### Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -54,61 +81,49 @@ sequenceDiagram
     C ->> U: Show "⚠️ Possible Cyberbullying" overlay (if flagged)
 ```
 
----
+### Component Diagram
 
-## 🧠 Machine Learning
+```mermaid
+graph TD
+    A[Chrome Extension]
+    B[FastAPI Backend]
+    C[RoBERTa Model]
+    D[PostgreSQL Database]
 
--   Fine-tuned transformer-based models (e.g., `BERT`, `RoBERTa`)
--   Preprocessing: tokenization, cleaning, annotation
--   Evaluation metrics: `Precision`, `Recall`, `F1-Score`
-
----
-
-## 🧩 Project Components
-
-### 🧠 Backend: `FastAPI`
-
--   `/predict`: Returns classification label for a given tweet.
--   `/store`: Saves tweet and label into the database.
-
-### 🌐 Frontend: Chrome/Firefox Extension
-
--   **Content Script**: Extracts tweet content from Twitter DOM.
--   **Background Script**: Sends content to backend and injects warning labels on tweets flagged as cyberbullying.
-
-### 🛢️ Database: PostgreSQL
-
--   Stores tweet `id`, `author`, `text`, and predicted `label`.
-
----
-
-## 🔧 Setup Instructions
-
-### 📦 Dependencies
-
--   Python (FastAPI, Transformers, SQLAlchemy)
--   Node.js (for extension packaging, if needed)
--   PostgreSQL (with configured credentials)
-
-### ⚙️ Backend
-
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Set environment and run FastAPI
-python app.py
+    A -->|/predict| B
+    B -->|Inference| C
+    B -->|Log tweet| D
+    A <-->|Display results| B
 ```
 
-### 🧩 Browser Extension
+## 📊 Model Training
 
-1. Go to `chrome://extensions/`
-2. Enable "Developer Mode"
-3. Click "Load Unpacked" and select your extension directory.
+- Dataset: Preprocessed Twitter-like text, binary labels.
+- Model: `roberta-base` fine-tuned with class weights for imbalance.
+- Metrics: Accuracy, F1-score.
+- Output: Saved model artifacts and tokenizer for inference.
 
----
+## 🧪 Evaluation
 
-## 🧪 API Usage
+- Weighted loss used to handle class imbalance.
+- F1-score prioritized to minimize false negatives.
+- Model deployed behind a FastAPI endpoint `/predict`.
+
+## 🔐 Privacy & Ethics
+
+- Does **not** store any personally identifiable information (PII).
+- Data is stored locally/internally and not shared externally.
+- Intended as an advocacy/proof-of-concept tool only.
+
+## 🚀 Deployment
+
+1. Clone the repository.
+2. Set up `.env` with PostgreSQL credentials.
+3. Run: `docker-compose up --build`
+4. Add extension to Chrome from the `/extension/` directory.
+5. Start browsing Twitter—flagged tweets will appear with a warning banner.
+
+## 🧰 API Reference
 
 ### POST `/predict`
 
@@ -131,6 +146,8 @@ python app.py
 }
 ```
 
+---
+
 ### POST `/store`
 
 **Request:**
@@ -138,31 +155,52 @@ python app.py
 ```json
 {
     "id": "123456",
-    "author": "@example",
-    "text": "You are so stupid and ugly",
+    "author": "@user",
+    "text": "example tweet",
     "label": "cyberbullying"
 }
 ```
 
+**Response:**
+
+```json
+{
+    "status": "stored"
+}
+```
+
+## 📁 Project Structure
+
+```plaintext
+.
+├── extension/              # Browser extension files
+├── engine/
+│   ├── app.py              # FastAPI server
+│   ├── config.yaml         # Configs for DB and server
+│   ├── predict.py          # Inference logic
+│   ├── model/              # Saved model + tokenizer
+│   ├── data/               # Processed dataset
+│   ├── train.ipynb         # Training script (Jupyter Notebook)
+│   └── train.py            # Training script
+├── docker-compose.yml
+```
+
+## 💡 Future Improvements
+
+- Add image and video support.
+- Add multilingual support.
+- Real-time moderation dashboard.
+- User feedback integration loop for false positives/negatives.
+
+## 🙌 Acknowledgements
+
+- HuggingFace Transformers
+- OLID (Offensive Language Identification Dataset)
+- Jigsaw (Toxic Comment Classification Challenge)
+- Open-source contributors working on online safety and NLP
+
 ---
 
-## ⚖️ Ethical Considerations
-
--   Not all offensive or negative content is cyberbullying.
--   System flags based on linguistic patterns, not intent.
--   Final judgments should involve human moderation in real applications.
-
----
-
-## 📌 Future Improvements
-
--   Add user feedback to improve model performance.
--   Enable support for image/multimodal content.
--   Improve multilingual support.
--   Real-time streaming with Twitter API v2 (if accessible).
-
----
-
-## 📝 License
-
-This project is for educational and advocacy purposes. Use responsibly.
+**Author:** Abenezer Adane  
+**Version:** 1.0 – Advocacy Proof-of-Concept  
+**License:** This project is for educational and advocacy purposes. Use responsibly.
