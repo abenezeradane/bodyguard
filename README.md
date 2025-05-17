@@ -118,10 +118,11 @@ graph TD
 ## 🚀 Deployment
 
 1. Clone the repository.
-2. Set up `.env` with PostgreSQL credentials.
-3. Run: `docker-compose up --build`
-4. Add extension to Chrome from the `/extension/` directory.
-5. Start browsing Twitter—flagged tweets will appear with a warning banner.
+2. Run `python engine/train.py` to train model using dataset
+3. Set up `.env` with PostgreSQL credentials.
+4. Run: `docker-compose up --build`
+5. Add extension to Chrome from the `/extension/` directory.
+6. Start browsing Twitter—flagged tweets will appear with a warning banner.
 
 ## 🧰 API Reference
 
