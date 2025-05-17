@@ -50,7 +50,7 @@ Design and deploy a system that:
 
 ## 📦 Tech Stack
 
-- **Frontend:** Chrome Extension (Vanilla JS, DOM API)
+- **Frontend:** Browser Extension (Vanilla JS, DOM API)
 - **Backend:** FastAPI, PostgreSQL, Docker
 - **ML:** Transformers (RoBERTa), PyTorch
 - **Deployment:** Docker Compose
