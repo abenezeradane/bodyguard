@@ -1,0 +1,8 @@
+server:
+    port: 8080
+
+database:
+    username: [FILL OUT]
+    password: [FILL OUT]
+    name: bodyguarddb
+    port: 5432
