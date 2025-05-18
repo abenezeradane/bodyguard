@@ -117,12 +117,32 @@ graph TD
 
 ## 🚀 Deployment
 
-1. Clone the repository.
-2. Run `python engine/train.py` to train model using dataset
-3. Set up `.env` with PostgreSQL credentials.
-4. Run: `docker-compose up --build`
-5. Add extension to Browser from the `/extension/` directory.
-6. Start browsing Twitter—flagged tweets will appear with a warning banner.
+1. **Clone** the repository.
+2. **Train the model**:
+    - Preferred: Run `engine/core/train.ipynb` (interactive).
+    - Alternative: Install dependencies from `engine/core/requirements.txt` and run `engine/core/train.py`.
+3. **Set up** `.env` with your PostgreSQL credentials.
+4. **Set up** `engine/core/config.yaml` with config
+    ```yaml
+    server:
+        port: 8080
+    
+    database:
+        username: [FILL OUT]
+        password: [FILL OUT]
+        name: bodyguarddb
+        port: 5432
+    ```  
+5. **Run the backend**:
+    ```bash
+    docker-compose up --build
+    ```
+6. **Install the browser extension**:
+    - Download from the [Releases](https://github.com/your-username/bodyguard/releases).
+    - 🟡 **Chrome**: Drag `.crx` file into `chrome://extensions` with Developer Mode enabled.
+    - 🔵 **Firefox**: Go to `about:addons` → gear icon → *Install Add-on From File...* and select `.xpi`.
+7. **Browse Twitter**:
+    - Tweets flagged as cyberbullying will be masked with a warning banner and a toggle button.
 
 ## 🧰 API Reference
 
@@ -169,6 +189,29 @@ graph TD
     "status": "stored"
 }
 ```
+
+---
+
+## 📊 Examples
+
+| Tweet Text                                   | Classification     |
+|---------------------------------------------|--------------------|
+| "You're pathetic and no one likes you."     | ⚠️ Cyberbullying   |
+| "You're amazing—keep shining!"              | ✅ Not Cyberbullying |
+| "Why are you such a loser?"                 | ⚠️ Cyberbullying   |
+| "Nice job on the project."                  | ✅ Not Cyberbullying |
+| "Go kill yourself already."                 | ⚠️ Cyberbullying   |
+
+---
+
+## ⚠️ Known Shortcomings
+
+- **False Negatives**: Some subtle bullying may not be flagged (e.g., sarcasm).
+- **False Positives**: Some innocuous tweets may be incorrectly flagged.
+- **Low Training Samples**: Especially for nuanced or niche forms of cyberbullying.
+- **No Context Awareness**: Lacks thread-level or user history context.
+
+---
 
 ## 📁 Project Structure
 
