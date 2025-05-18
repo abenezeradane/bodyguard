@@ -85,7 +85,7 @@ sequenceDiagram
 
 ```mermaid
 graph TD
-    A[Chrome Extension]
+    A[Browser Extension]
     B[FastAPI Backend]
     C[RoBERTa Model]
     D[PostgreSQL Database]
@@ -121,7 +121,7 @@ graph TD
 2. Run `python engine/train.py` to train model using dataset
 3. Set up `.env` with PostgreSQL credentials.
 4. Run: `docker-compose up --build`
-5. Add extension to Chrome from the `/extension/` directory.
+5. Add extension to Browser from the `/extension/` directory.
 6. Start browsing Twitter—flagged tweets will appear with a warning banner.
 
 ## 🧰 API Reference
