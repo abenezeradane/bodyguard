@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+transformers
+datasets
+scikit-learn
+pandas
+torch
+sqlalchemy
+PyYAML
+psycopg2-binary
