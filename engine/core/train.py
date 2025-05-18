@@ -10,6 +10,14 @@ from transformers import (
 )
 import torch
 import os
+import zipfile
+import shutil
+
+ZIP_PATH = os.path.join("engine", "data", "processed_cyberbullying_dataset.zip")
+
+EXTRACT_DIR = os.path.join("engine", "data")
+with zipfile.ZipFile(ZIP_PATH, 'r') as zip_ref:
+    zip_ref.extractall(EXTRACT_DIR)
 
 DATA_DIR = os.path.join("engine", "data", "processed_cyberbullying_dataset.csv")
 assert os.path.exists(DATA_DIR, f"Data file not found: {DATA_DIR}")
@@ -79,5 +87,12 @@ trainer = WeightedTrainer(
 )
 
 trainer.train()
+
+if os.path.exists(MODEL_DIR):
+    shutil.rmtree(MODEL_DIR)
+    
+model.config.id2label = {0: "not_cyberbullying", 1: "cyberbullying"}
+model.config.label2id = {"not_cyberbullying": 0, "cyberbullying": 1}
+
 model.save_pretrained(MODEL_DIR)
 tokenizer.save_pretrained(MODEL_DIR)
