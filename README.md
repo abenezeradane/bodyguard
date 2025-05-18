@@ -98,10 +98,10 @@ graph TD
 
 ## 📊 Model Training
 
-- Dataset: Preprocessed Twitter-like text, binary labels.
-- Model: `roberta-base` fine-tuned with class weights for imbalance.
-- Metrics: Accuracy, F1-score.
-- Output: Saved model artifacts and tokenizer for inference.
+- **Dataset**: Preprocessed Twitter-like text, binary labels.
+- **Model**: `roberta-base` fine-tuned with class weights for imbalance.
+- **Metrics**: Accuracy, F1-score.
+- **Output**: Saved model artifacts and tokenizer for inference.
 
 ## 🧪 Evaluation
 
