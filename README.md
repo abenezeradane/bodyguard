@@ -194,13 +194,13 @@ graph TD
 
 ## 📊 Examples
 
-| Tweet Text                                   | Classification     |
+| Flagged Tweet                                   | Tweet Contents     |
 |---------------------------------------------|--------------------|
-| "You're pathetic and no one likes you."     | ⚠️ Cyberbullying   |
-| "You're amazing—keep shining!"              | ✅ Not Cyberbullying |
-| "Why are you such a loser?"                 | ⚠️ Cyberbullying   |
-| "Nice job on the project."                  | ✅ Not Cyberbullying |
-| "Go kill yourself already."                 | ⚠️ Cyberbullying   |
+| ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/01.png) | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/02.png) |
+| ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/03.png) | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/04.png) |
+| ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/05.png) | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/06.png) |
+| ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/07.png) | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/08.png) |
+| ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/09.png) | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/10.png) |
 
 ---
 
