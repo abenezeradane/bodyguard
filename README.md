@@ -192,17 +192,6 @@ graph TD
 
 ---
 
-## 📊 Examples
-
-| Flagged Tweet                                   | Tweet Contents     |
-|---------------------------------------------|--------------------|
-| <img src="https://github.com/abenezeradane/bodyguard/blob/main/examples/01.png" style="height: 10vh;"> | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/02.png) |
-| <img src="https://github.com/abenezeradane/bodyguard/blob/main/examples/05.png" style="height: 10vh;"> | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/06.png) |
-| <img src="https://github.com/abenezeradane/bodyguard/blob/main/examples/07.png" style="height: 10vh;"> | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/08.png) |
-| <img src="https://github.com/abenezeradane/bodyguard/blob/main/examples/09.png" style="height: 10vh;"> | ![Example](https://github.com/abenezeradane/bodyguard/blob/main/examples/10.png) |
-
----
-
 ## ⚠️ Known Shortcomings
 
 - **False Negatives**: Some subtle bullying may not be flagged (e.g., sarcasm).
