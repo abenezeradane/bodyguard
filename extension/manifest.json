@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "Bodyguard Twitter Classifier",
+    "version": "1.1",
+
+    "description": "Detects and blocks cyberbullying tweets",
+    "icons": {
+        "96": "icons/icon.svg"
+    },
+
+    "permissions": ["activeTab", "scripting"],
+    "host_permissions": [
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "http://localhost:8080/*"
+    ],
+    
+    "content_scripts": [
+        {
+            "matches": ["*://*.twitter.com/*", "*://*.x.com/*"],
+            "js": ["content.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    
+    "background": {
+        "scripts": ["background.js"]
+    },
+    
+    "action": {
+        "default_title": "Bodyguard Active"
+    },
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "bodyguard@aadane.com"
+        }
+    }
+}
