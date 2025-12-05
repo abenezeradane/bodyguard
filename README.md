@@ -1,9 +1,9 @@
 # bodyguard
-> 🛡️  **Cyberbullying Detection System (Advocacy Project)**
+> **Cyberbullying Detection System (Advocacy Project)**
 
 This project aims to reduce cyberbullying on social media platforms by detecting harmful content in real-time using Natural Language Processing (NLP) and machine learning. The focus is on text-based tweets, analyzed through a browser extension and a backend ML service.
 
-## 🧠 Objective
+## Objective
 
 Design and deploy a system that:
 
@@ -11,7 +11,7 @@ Design and deploy a system that:
 - Flags tweets with warnings in the user interface.
 - Stores flagged data for analysis and improvement.
 
-## 🗓️ Project Plan
+## Project Plan
 
 ### Month 1 – Research, Planning, and Data Collection
 
@@ -48,14 +48,14 @@ Design and deploy a system that:
 - Evaluate the model (precision, recall, F1-score).
 - Integrate feedback and finalize the system.
 
-## 📦 Tech Stack
+## Tech Stack
 
 - **Frontend:** Browser Extension (Vanilla JS, DOM API)
 - **Backend:** FastAPI, PostgreSQL, Docker
 - **ML:** Transformers (RoBERTa), PyTorch
 - **Deployment:** Docker Compose
 
-## ⚙️ Architecture Overview
+## Architecture Overview
 
 ### Sequence Diagram
 
@@ -96,26 +96,26 @@ graph TD
     A <-->|Display results| B
 ```
 
-## 📊 Model Training
+## Model Training
 
 - **Dataset**: Preprocessed Twitter-like text, binary labels.
 - **Model**: `roberta-base` fine-tuned with class weights for imbalance.
 - **Metrics**: Accuracy, F1-score.
 - **Output**: Saved model artifacts and tokenizer for inference.
 
-## 🧪 Evaluation
+## Evaluation
 
 - Weighted loss used to handle class imbalance.
 - F1-score prioritized to minimize false negatives.
 - Model deployed behind a FastAPI endpoint `/predict`.
 
-## 🔐 Privacy & Ethics
+## Privacy & Ethics
 
 - Does **not** store any personally identifiable information (PII).
 - Data is stored locally/internally and not shared externally.
 - Intended as an advocacy/proof-of-concept tool only.
 
-## 🚀 Deployment
+## Deployment
 
 1. **Clone** the repository.
 2. **Train the model**:
@@ -139,12 +139,12 @@ graph TD
     ```
 6. **Install the browser extension**:
     - Download from the [Releases](https://github.com/your-username/bodyguard/releases).
-    - 🟡 **Chrome**: Drag `.crx` file into `chrome://extensions` with Developer Mode enabled.
-    - 🔵 **Firefox**: Go to `about:addons` → gear icon → *Install Add-on From File...* and select `.xpi`.
+    - **Chrome**: Drag `.crx` file into `chrome://extensions` with Developer Mode enabled.
+    - **Firefox**: Go to `about:addons` → gear icon → *Install Add-on From File...* and select `.xpi`.
 7. **Browse Twitter**:
     - Tweets flagged as cyberbullying will be masked with a warning banner and a toggle button.
 
-## 🧰 API Reference
+## API Reference
 
 ### POST `/predict`
 
@@ -192,7 +192,7 @@ graph TD
 
 ---
 
-## ⚠️ Known Shortcomings
+## Known Shortcomings
 
 - **False Negatives**: Some subtle bullying may not be flagged (e.g., sarcasm).
 - **False Positives**: Some innocuous tweets may be incorrectly flagged.
@@ -201,7 +201,7 @@ graph TD
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```plaintext
 .
@@ -217,14 +217,14 @@ graph TD
 ├── docker-compose.yml
 ```
 
-## 💡 Future Improvements
+## Future Improvements
 
 - Add image and video support.
 - Add multilingual support.
 - Real-time moderation dashboard.
 - User feedback integration loop for false positives/negatives.
 
-## 🙌 Acknowledgements
+## Acknowledgements
 
 - HuggingFace Transformers
 - OLID (Offensive Language Identification Dataset)
